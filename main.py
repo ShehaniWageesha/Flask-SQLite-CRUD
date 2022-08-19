@@ -42,6 +42,12 @@ def login():
     result = user_controller.login(nic, pw)
     return result
 
+@app.route('/api/user', methods=['GET'])
+def get_user():
+    nic = request.args.get('nic', None)
+    result = user_controller.view_user(nic)
+    return result
+
 
 @app.after_request
 def after_request(response):
