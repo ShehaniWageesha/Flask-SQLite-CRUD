@@ -7,3 +7,5 @@ Included Func :
     - User Verification
     
     - User Login
+    
+    - User Profile
