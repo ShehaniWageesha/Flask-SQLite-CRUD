@@ -60,3 +60,17 @@ def login(nic, pw):
     return make_response(jsonify({"message": "Please check your credentials", "data": None, "error": "1", "meta": None}), 401)
 
 
+# view user
+def view_user(nic):
+    db = get_db()
+    cursor = db.cursor()
+    statement = "SELECT * FROM user WHERE nic = ?"
+    cursor.execute(statement, [nic])
+    result = cursor.fetchall()
+    x = len(result)
+    if (x == 0):
+        return make_response(jsonify({"message": "No records found", "data": None, "error": "1", "meta": None}), 404)
+    elif (x > 1):
+        return make_response(jsonify({"message": "Multiple records found", "data": None, "error": "1", "meta": None}), 401)
+    return make_response(jsonify({"message": "User successfully retrieved", "data": str(result), "error": "0", "meta": None}), 200)
+
