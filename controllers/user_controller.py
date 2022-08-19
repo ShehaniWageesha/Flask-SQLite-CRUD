@@ -60,7 +60,7 @@ def login(nic, pw):
     return make_response(jsonify({"message": "Please check your credentials", "data": None, "error": "1", "meta": None}), 401)
 
 
-# view user
+# view user profile
 def view_user(nic):
     db = get_db()
     cursor = db.cursor()
