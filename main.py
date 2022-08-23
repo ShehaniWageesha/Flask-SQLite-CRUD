@@ -6,7 +6,7 @@ from db import create_tables
 from helper.id_generate import generate_pin
 from helper.password import hashpw
 import controllers.user_controller as user_controller
-from flask import Flask, jsonify, request
+from flask import Flask, request
 from flask_cors import CORS
 import datetime as dt
 
@@ -17,13 +17,14 @@ CORS(app)
 def insert_user():
     user_details = request.get_json()
     nic = user_details["nic"]
+    name = user_details["name"]
     phone = user_details["phone"]
     password = user_details["password"]
     password = hashpw(password)
     qrcode = generate_pin(5)
     date = dt.datetime.now()
     result = user_controller.insert_user(
-        nic, phone, password, qrcode, date)
+        nic, name, phone, password, qrcode, date)
     return result
 
 

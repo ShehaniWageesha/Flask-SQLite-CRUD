@@ -5,7 +5,7 @@ from flask import Flask, jsonify, make_response
 app = Flask(__name__)
 
 # user creation
-def insert_user(nic, phone, password, qrcode, lastlogin):
+def insert_user(nic, name, phone, password, qrcode, lastlogin):
     db = get_db()
     cursor = db.cursor()
     statement = "SELECT * FROM user WHERE nic = ?"
@@ -13,8 +13,8 @@ def insert_user(nic, phone, password, qrcode, lastlogin):
     data = cursor.fetchall()
     if len(data) > 0:
         return make_response(jsonify({"message": "User already exists", "user": {"nic": nic}, "error": "1", "meta": None}), 409)
-    statement = "INSERT INTO user (nic, phone, password, qrcode, status, lastlogin) VALUES (?, ?, ?, ?, ?, ?)"
-    cursor.execute(statement, [nic, phone, password, qrcode, '0', lastlogin])
+    statement = "INSERT INTO user (nic, name, phone, password, qrcode, status, lastlogin) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    cursor.execute(statement, [nic, name, phone, password, qrcode, '0', lastlogin])
     db.commit()
     return make_response(jsonify({"message": "User successfully created", "data": nic, "error": "0", "meta": None}), 200)
 
