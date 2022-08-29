@@ -6,6 +6,7 @@ from db import create_tables
 from helper.id_generate import generate_pin
 from helper.password import hashpw
 import controllers.user_controller as user_controller
+import controllers.course_controller as course_controller
 from flask import Flask, request
 from flask_cors import CORS
 import datetime as dt
@@ -26,7 +27,6 @@ def insert_user():
     result = user_controller.insert_user(
         nic, name, phone, password, qrcode, date)
     return result
-
 
 @app.route('/api/user-verify', methods=["POST"])
 def user_verify():
@@ -49,6 +49,13 @@ def get_user():
     result = user_controller.view_user(nic)
     return result
 
+@app.route("/api/course", methods=["POST"])
+def insert_course():
+    course_details = request.get_json()
+    name = course_details["name"]
+    fee = course_details["fee"]
+    result = course_controller.insert_course(name, fee)
+    return result
 
 @app.after_request
 def after_request(response):

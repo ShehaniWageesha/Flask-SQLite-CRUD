@@ -15,6 +15,11 @@ def create_tables():
   qrcode TEXT,
   status INTEGER,
   lastlogin TEXT
+)""",
+"""CREATE TABLE IF NOT EXISTS course(
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  fee REAL NOT NULL
 )"""
     ]
     db = get_db()
