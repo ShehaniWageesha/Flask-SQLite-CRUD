@@ -1,7 +1,17 @@
-### API REST - Flask, Python, SQLite3, JSON
----
-Included Functions : <br/>
-   * User Creation <br/>
-   * User Verification <br/>
-   * User Login <br/>
-   * User Profile
+# API REST - Flask, Python, SQLite3, JSON
+
+The capabilities of this application include
+- Create New Users.
+- User Login.
+- User Verification.
+- User Profile.
+
+## Clone the repository
+```sh
+git clone https://github.com/ShehaniWageesha/Flask-SQLite-CRUD.git
+```
+
+## Run the server
+```sh
+python main.py
+```
