@@ -5,6 +5,7 @@ The capabilities of this application include
 - User Login.
 - User Verification.
 - User Profile.
+- Add Courses.
 
 ## Clone the repository
 ```sh
